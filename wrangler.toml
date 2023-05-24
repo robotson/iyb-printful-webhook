@@ -1,0 +1,8 @@
+name = "iyb-printful-webhook"
+main = "src/index.js"
+compatibility_date = "2023-04-19"
+usage_model = "bundled"
+env = { }
+
+[triggers]
+crons = [ ]
