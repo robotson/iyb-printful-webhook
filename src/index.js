@@ -203,7 +203,7 @@ function buildLineItemsShippedTemplate(body) {
 
 function createOrderEmailPayload(env, checkoutSession, listItems) {
   let emailText = `Hello ${checkoutSession.customer_details.name},\n\n`;
-  emailText += `Your order was recieved:\n\n`;
+  emailText += `Your order was received:\n\n`;
   emailText += buildLineItemsTemplate(listItems);
   emailText += `=====\n`;
   emailText += `Subtotal: ${currency(checkoutSession.amount_subtotal, {
@@ -219,7 +219,7 @@ function createOrderEmailPayload(env, checkoutSession, listItems) {
     fromCents: true,
   }).format()}\n\n`;
   emailText += `Thanks for shopping with us!\n\n`;
-  emailText += `You should receive another email when your order is ready.`;
+  emailText += `You should receive another email when your order is ready. `;
   emailText += `If you have any questions, please email ${env.ADMIN_FROM_EMAIL}\n\n`;
   emailText += `Best regards,\n`;
   emailText += `- it's ya boi`;
@@ -244,7 +244,7 @@ function createOrderEmailPayload(env, checkoutSession, listItems) {
             Name: env.ADMIN_FROM_NAME,
           },
         ],
-        Subject: "Your order has been recieved - it's ya boi",
+        Subject: "Your order has been received - it's ya boi",
         TextPart: emailText,
       },
     ],
@@ -306,7 +306,7 @@ function buildLineItemsTemplate(items) {
       fromCents: true,
     }).format();
     listItems += `• "${item.description}" (x${item.quantity})`;
-    listItems += ` - ${retail_price} each\n  Item subtotal: ${total_price}\n`;
+    listItems += ` - ${retail_price} each\n  Item Subtotal: ${total_price}\n`;
     listItems += `\n`;
   });
   return listItems;
