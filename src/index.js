@@ -177,8 +177,9 @@ function createPackageShippedEmailPayload(env, body) {
         },
         To: [
           {
-            // Email: customerEmail,
-            Email: env.ADMIN_FROM_EMAIL,
+            Email: customerEmail,
+            // toggle these to email admin when testing
+            // Email: env.ADMIN_FROM_EMAIL,
             Name: customerName,
           },
         ],
