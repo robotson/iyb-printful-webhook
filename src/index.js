@@ -257,15 +257,16 @@ async function handleOrderCreated(body, env) {
   // If we've recieved the webhook 'order_created' event from Printful,
   // cross reference the external_id with the Stripe payment intent id
   const payment_intent = body.data.order.external_id;
+  console.log("it's the body", JSON.stringify(body, null, 2));
   const checkoutSessions = await stripe.checkout.sessions.list({
     payment_intent: payment_intent,
     limit: 1,
   });
   const sessionId = checkoutSessions.data[0].id;
-  // console.log(
-  //   "It's ya checkoutSession",
-  //   JSON.stringify(checkoutSessions, null, 2)
-  // );
+  console.log(
+    "It's ya checkoutSession",
+    JSON.stringify(checkoutSessions, null, 2)
+  );
 
   // then we can get the order details
   const listLineItems = await stripe.checkout.sessions.listLineItems(sessionId);
